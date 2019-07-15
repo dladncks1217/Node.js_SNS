@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon app"
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/dladncks1217/Node.js_SNS/issues"
   },
-  "homepage": "https://github.com/dladncks1217/Node.js_SNS#readme"
+  "homepage": "https://github.com/dladncks1217/Node.js_SNS#readme",
+  "dependencies": {
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.10.1"
+  }
 }
