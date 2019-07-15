@@ -29,6 +29,9 @@ app.use(session({
 app.use(flash());
 
 
+app.use('/',indexRouter);
+
+
 app.listen(app.get('port'),()=>{
     console.log(`${app.get('port')}8001포트에서 서버 대기중입니다!`);
 });
