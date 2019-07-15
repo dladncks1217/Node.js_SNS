@@ -3,6 +3,7 @@ const cookieparser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
 const flash = require('flash');
+const IndexRouter = require('./routes/index');
 require('dotenv').config();
 
 const app = express();
