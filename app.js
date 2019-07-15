@@ -32,7 +32,19 @@ app.use(flash());
 
 app.use('/',IndexRouter);
 
+app.use((req,res,next)=>{
+    const err = new Error('NOT FOUND');
+    err.status = 404;
+    next(err);
+});
+
+app.use((err,req,res)=>{
+    res.locals.message = err.message;
+    res.locals.message = req.app.get('env') === 'development' ? err :{};
+    res.status(err.status||500);
+    res.render('error');
+});
 
 app.listen(app.get('port'),()=>{
-    console.log(`${app.get('port')}8001포트에서 서버 대기중입니다!`);
+    console.log(`${app.get('port')}번 포트에서 서버 대기중입니다!`);
 });
