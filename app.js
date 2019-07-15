@@ -3,6 +3,7 @@ const cookieparser = require('cookie-parser');
 const morgan = require('morgan');
 const session = require('express-session');
 const flash = require('flash');
+require('dotenv').config();
 
 const app = express();
 
@@ -14,11 +15,11 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(expres.json());
 app.use(express.unlencoded({extended:false}));
-app.use(cookieparser('nodebirdsecret'));
+app.use(cookieparser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
     saveUnitialized:false,
-    secret:'nodebirdsecret',
+    secret:process.env.COOKIE_SECRET,
     cookie:{
         httpOnly:true,
         secure:false,
