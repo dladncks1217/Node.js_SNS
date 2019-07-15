@@ -1,8 +1,9 @@
 const express = require('express');
 const cookieparser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 const session = require('express-session');
-const flash = require('flash');
+const flash = require('connect-flash');
 const IndexRouter = require('./routes/index');
 require('dotenv').config();
 
@@ -14,8 +15,8 @@ app.set('port',process.env.PORT||8001);
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'public')));
-app.use(expres.json());
-app.use(express.unlencoded({extended:false}));
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use(cookieparser(process.env.COOKIE_SECRET));
 app.use(session({
     resave: false,
@@ -29,7 +30,7 @@ app.use(session({
 app.use(flash());
 
 
-app.use('/',indexRouter);
+app.use('/',IndexRouter);
 
 
 app.listen(app.get('port'),()=>{
