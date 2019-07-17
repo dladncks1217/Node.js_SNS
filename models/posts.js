@@ -1,5 +1,5 @@
-module.exports = (sequelize,DataTypes)=>{
-    return seqeulize.define('posts',{
+module.exports = (sequelize,DataTypes)=>(
+    seqeulize.define('posts',{
         content:{
             type:DataTypes.STRING(140),
             allowNull: false,
@@ -12,4 +12,4 @@ module.exports = (sequelize,DataTypes)=>{
         timestamps:true,
         paranoid:true,
     })
-};
+);

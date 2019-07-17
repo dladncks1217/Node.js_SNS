@@ -1,5 +1,5 @@
-module.exports = (sequelize,DataTypes)=>{
-    return sequelize.define('user',{
+module.exports = (sequelize,DataTypes)=>(
+    sequelize.define('user',{
         email:{
             type: DataTypes.STRING(40),
             allowNull: false,
@@ -25,4 +25,4 @@ module.exports = (sequelize,DataTypes)=>{
         timestamps:true, //시퀄라이즈가 자동으로 수정일과 row 생성일을 기록해줍니다.
         paranoid:true, //삭제일을 시퀄라이즈가 자동으로 기록해준다.(데이터 복구가능)
     })
-};
+);
