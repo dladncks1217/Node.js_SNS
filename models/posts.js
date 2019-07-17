@@ -1,5 +1,5 @@
 module.exports = (sequelize,DataTypes)=>{
-    return seqeulize.define('post',{
+    return seqeulize.define('posts',{
 
     });
-}
+};
