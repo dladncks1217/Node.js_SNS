@@ -9,6 +9,8 @@ const kakaopassport = require('passport-kakao');
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 const IndexRouter = require('./routes/index');
+const passportConfig = require('./passport');
+
 require('dotenv').config();
 
 const app = express();
