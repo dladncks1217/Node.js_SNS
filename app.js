@@ -9,7 +9,7 @@ const kakaopassport = require('passport-kakao');
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 const IndexRouter = require('./routes/index');
-const passportConfig = require('./passport');
+const passportConfig = require('./passport'); //passport의 index연결
 
 require('dotenv').config();
 
@@ -34,6 +34,9 @@ app.use(session({
     },
 }));
 app.use(flash());
+
+app.use(passport.initialize()); //passport는 세션을 사용해야하기에 반드시 express-session밑에 passport쪽 미들웨어 연결.
+app.use(passport.session());
 
 
 app.use('/',IndexRouter);
