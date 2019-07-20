@@ -13,7 +13,7 @@ router.get('/join',(req,res)=>{
 router.get('/profile',(req,res)=>{
     res.render('profile',{title:'내 정보 - NodeBird',user:null});
 });
-
+ 
 //메인 페이지
 router.get('/',(req,res,next)=>{
      res.render('main',{
