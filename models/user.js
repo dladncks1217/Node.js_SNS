@@ -16,7 +16,7 @@ module.exports = (sequelize,DataTypes)=>(
             type:DataTypes.STRING(10),
             allowNull:true,
             defaultValue:'local',
-        },
+        }, 
         snsId:{
             type:DataTypes.STRING(30),
             allowNull:true,
