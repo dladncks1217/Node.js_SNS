@@ -10,7 +10,7 @@ const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
 const IndexRouter = require('./routes/index');
 const passportConfig = require('./passport'); //passport의 index연결
-
+  
 require('dotenv').config();
 
 const app = express();
