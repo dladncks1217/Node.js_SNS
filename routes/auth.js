@@ -12,7 +12,7 @@ router.post('/join', async (req,res,next)=>{ //promise async
         if(exUser){
             req.flash('joinError','이미 가입된 이메일입니다.');
             return res.redirect('/join');
-        }
+        } 
         console.time('암호화 시간')
         const hash = await bcrypt.hash(password,12);//여기서 이 숫자를 조절해 1초정도로 맞추자. 너무낮으면 해커들이 뚫기 쉽고 너무 높으면 오래걸린다.(적당한숫자로하자.)
         console.timeEnd('암호화 시간');
