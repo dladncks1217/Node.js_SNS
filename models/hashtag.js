@@ -1,6 +1,6 @@
 module.exports = (sequelize,DataTypes)=>(
     sequelize.define('hashtag',{
-        title:{
+        title:{ 
             type:DataTypes.STRING(15),
             allowNull:false,
             unique:true,
@@ -8,5 +8,5 @@ module.exports = (sequelize,DataTypes)=>(
     },{ 
         timestamps:true,
         paranoid:true,
-    })
+    }) 
 );
