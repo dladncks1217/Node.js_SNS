@@ -8,8 +8,11 @@ const localpassport = require('passport-local');
 const kakaopassport = require('passport-kakao');
 const bcrypt = require('bcrypt');
 const flash = require('connect-flash');
-const IndexRouter = require('./routes/index');
 const passportConfig = require('./passport'); //passport의 index연결
+
+
+const IndexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
   
 require('dotenv').config();
 
@@ -40,6 +43,7 @@ app.use(passport.session());
 
 
 app.use('/',IndexRouter);
+app.use('/auth',authRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('NOT FOUND');
