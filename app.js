@@ -13,10 +13,15 @@ const passportConfig = require('./passport'); //passport의 index연결
 
 const IndexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+
+const {sequelize} = require('./models');
   
 require('dotenv').config();
 
 const app = express();
+
+sequelize.sync();
+
 
 app.set('view engine', 'pug');
 app.set('views',path.join(__dirname,'views'));
