@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
-const config = require('../config/config');
+const config = require('../config/config')[env];
 const db = {};
 
 const sequelize = new Sequelize(
@@ -23,8 +23,17 @@ db.Post.belongsToMany(db.Hashtag,{through:'PostHashtag',});
 db.Hashtag.belongsToMany(db.Post,{through: 'PostHashtag'});
 //다대다 관계 새로운 모델(테이블) 생성 (PostHashtag) 게시글과 해시태그 관계
 
-db.User.belongsToMany(db.User,{through:'Follow',as:'Followers', foreignKey:'followingId'});
-db.User.belongsToMany(db.User,{through:'Follow', as:'Following', foreignKey:'followerId'});
+db.User.belongsToMany(db.User,{
+  through:'Follow',
+  as:'Followers', 
+  foreignKey:'followingId'
+});
+
+db.User.belongsToMany(db.User,{
+  through:'Follow', 
+  as:'Following', 
+  foreignKey:'followerId'
+});
 //유저와 유저관의 관계(팔로우, 팔로워)
 
 db.User.belongsToMany(db.Post,{through:'Like'});
