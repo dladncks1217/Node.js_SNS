@@ -1,5 +1,5 @@
 module.exports = (sequelize,DataTypes)=>(
-    seqeulize.define('posts',{
+    sequelize.define('posts',{
         content:{
             type:DataTypes.STRING(140),
             allowNull: false,
