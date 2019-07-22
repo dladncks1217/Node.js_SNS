@@ -37,7 +37,7 @@ db.User.belongsToMany(db.User,{
 //유저와 유저관의 관계(팔로우, 팔로워)
 
 db.User.belongsToMany(db.Post,{through:'Like'});
-db.Post.belongsToManny(db.User,{through:'Like'});
+db.Post.belongsToMany(db.User,{through:'Like'});
 //좋아요 누르기 기능
 
 
