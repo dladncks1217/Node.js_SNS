@@ -3,7 +3,7 @@ const router = express.Router();
 const {isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
 //회원가입 페이지
-router.get('/join',isLoggedIn,(req,res)=>{ // 회원가입 안한사람은 프로필 안뜨도록
+router.get('/join',isNotLoggedIn,(req,res)=>{ // 회원가입 안한사람은 프로필 안뜨도록
     res.render('join',{
         title:'회원가입 - NodeBird',
         user:req.user,
@@ -11,7 +11,7 @@ router.get('/join',isLoggedIn,(req,res)=>{ // 회원가입 안한사람은 프�
     });
 });
 //프로필 페이지
-router.get('/profile',isNotLoggedIn, (req,res)=>{ // 로그인 한사람은 로그인창 안뜨도록
+router.get('/profile',isLoggedIn, (req,res)=>{ // 로그인 한사람은 로그인창 안뜨도록
     res.render('profile',{title:'내 정보 - NodeBird',user:null});
 });
  
