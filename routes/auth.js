@@ -19,7 +19,7 @@ router.post('/join',isNotLoggedIn, async (req,res,next)=>{ //promise async
         console.timeEnd('암호화 시간');
         await User.create({
             email,
-            nick,
+            nick, 
             password: hash,
         });
     }catch(error){
