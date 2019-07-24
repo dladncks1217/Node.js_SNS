@@ -45,6 +45,7 @@ app.use(flash());
 
 app.use(passport.initialize()); //passport는 세션을 사용해야하기에 반드시 express-session밑에 passport쪽 미들웨어 연결.
 app.use(passport.session());
+passportConfig(passport);
 
 
 app.use('/',IndexRouter);
