@@ -30,7 +30,7 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "pug": "^2.0.4",
-    "sequelize": "^5.10.1"
+    "sequelize": "^4.44.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
