@@ -58,7 +58,7 @@ router.get('/logout',isLoggedIn,(req,res)=>{
 router.get('/kakao',passport.authenticate('kakao')); //이게 실행되고 카카오 서버가 로그인 인증 대신해줌.
 router.get('/kakao/callback', passport.authenticate('kakao',{
     failureRedirect: '/',
-}),(res,res)=>{
+}),(req,res)=>{
     res.redirect('/');
 });
 module.exports = router;
