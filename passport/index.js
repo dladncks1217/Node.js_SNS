@@ -2,7 +2,6 @@ const local = require('../passport/localStrategy');
 const kakao = require('../passport/kakaoStrategy');
 const {User} = require('../models');
 
-const user = {};
 
 module.exports = (passport)=>{
     passport.serializeUser((user, done)=>{
@@ -12,17 +11,15 @@ module.exports = (passport)=>{
     //메모리에 한번만 저장
 
     passport.deserializeUser((id,done)=>{
-        if(user[id]){
-            done(user[id]);
-        } else{
+        
             User.find({where : {id}})
-            .then(user => user[id] = done(null,user))
+            .then(user => done(null,user))
             .catch(err => done(err));
-        }
+        
         
     });
     //요청 갈 때마다 매번 호출
     
     local(passport);
-    //kakao(passport);
+    kakao(passport);
 };
