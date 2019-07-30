@@ -23,6 +23,8 @@ module.exports = (sequelize,DataTypes)=>(
             allowNull:true,
         },
     },{
+        charset: 'utf8',
+        collate: 'utf8_general_ci', 
         timestamps:true, //시퀄라이즈가 자동으로 수정일과 row 생성일을 기록해줍니다.
         paranoid:true, //삭제일을 시퀄라이즈가 자동으로 기록해준다.(데이터 복구가능)
     })
