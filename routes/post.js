@@ -3,6 +3,8 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path'); 
 
+const {Post, Hashtag} = require('../models');
+
 const upload = multer({
     storage: multer.diskStorage({
         destination(req, file, cb){
@@ -21,6 +23,29 @@ router.post('/img',upload.single('img'),(req,res)=>{
     res.json({url: `/img/${req.file.filename}` });
 });
 
-router.post('/')
+const upload2 = multer();
+
+router.post('/', upload2.none(), async (req,res,next)=>{
+    //게시글 업로드
+    try{
+        const post = await Post.create({
+            content: req.body.content,
+            img: req.body.url,
+            userId: req.body.id,
+        });
+        const hashtags = req.body.content.match(/#[^\s]*/g); // /#[^\s]*/g 는 해시태그의 "정규표현식"
+        if(hashtags){
+            await Promise.all(hashtags.map(tag => Hashtag.findOrCreate({
+                where: {title : tag.slice(1).toLowerCase()},
+            })));
+            await post.addHashtags(result.map(r=>r[0]));
+        }
+        res.redirect('/');
+    }catch(error){
+        console.error(error);
+        next(error);
+    }
+
+});
 
 module.exports = router;
