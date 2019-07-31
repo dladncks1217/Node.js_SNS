@@ -13,6 +13,7 @@ const passportConfig = require('./passport'); //passport의 index연결
 
 const IndexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const postRouter = require('./routes/post');
 
 const {sequelize} = require('./models');
   
@@ -50,6 +51,7 @@ passportConfig(passport);
 
 app.use('/',IndexRouter);
 app.use('/auth',authRouter);
+app.use('/post',postRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('NOT FOUND');
