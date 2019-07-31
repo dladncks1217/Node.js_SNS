@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {isLoggedIn, isNotLoggedIn } = require('./middlewares');
 
+const{User,Post} = require('../models');
+
 //회원가입 페이지
 router.get('/join',isNotLoggedIn,(req,res)=>{ // 회원가입 안한사람은 프로필 안뜨도록
     res.render('join',{
@@ -17,12 +19,24 @@ router.get('/profile',isLoggedIn, (req,res)=>{ // 로그인 한사람은 로그�
  
 //메인 페이지
 router.get('/',(req,res,next)=>{
-     res.render('main',{
-         title:'NodeBird',
-         twits:[],
-         user:req.user,
-         loginError:req.flash('loginError'), //connect flash 모듈로 에러를 넣었다.
-     });
+    Post.findAll({
+        include:{
+            model:User,
+            attributes:['id','nick'],
+        },
+    })
+    .then((posts)=>{
+        res.render('main',{
+            title:'NodeBird',
+            twits: posts,
+            user:req.user,
+            loginError:req.flash('loginError'), //connect flash 모듈로 에러를 넣었다.
+        });
+    })
+    .catch((error)=>{
+        console.error(error);
+        next(error);
+    });
 });
 
 module.exports = router;
