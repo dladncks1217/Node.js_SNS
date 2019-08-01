@@ -6,6 +6,8 @@ module.exports = (sequelize,DataTypes)=>(
             unique:true,
         }
     },{ 
+        charset: 'utf8',
+        collate: 'utf8_general_ci',
         timestamps:true,
         paranoid:true,
     }) 
