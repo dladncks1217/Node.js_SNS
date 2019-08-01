@@ -12,7 +12,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize; 
 
 db.User = require('./user')(sequelize, Sequelize);
-db.Post = require('./posts')(sequelize, Sequelize);
+db.Post = require('./post')(sequelize, Sequelize);
 db.Hashtag = require('./hashtag')(sequelize, Sequelize);
 
 db.User.hasMany(db.Post);
