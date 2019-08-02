@@ -31,7 +31,7 @@ db.User.belongsToMany(db.User,{
 
 db.User.belongsToMany(db.User,{
   through:'Follow', 
-  as:'Following', 
+  as:'Followings', 
   foreignKey:'followerId'
 });
 //유저와 유저관의 관계(팔로우, 팔로워)
