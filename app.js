@@ -14,6 +14,7 @@ const passportConfig = require('./passport'); //passport의 index연결
 const IndexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
+const UserRouter = require('./routes/user');
 
 const {sequelize} = require('./models');
   
@@ -29,7 +30,8 @@ app.set('views',path.join(__dirname,'views'));
 app.set('port',process.env.PORT||8001);
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname,'public')));
+app.use('/', express.static(path.join(__dirname,'public'))); // /main.css
+app.use('/img', express.static(path.join(__dirname,'uploads'))); // /img/abc.png
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieparser(process.env.COOKIE_SECRET));
@@ -52,6 +54,7 @@ passportConfig(passport);
 app.use('/',IndexRouter);
 app.use('/auth',authRouter);
 app.use('/post',postRouter);
+app.use('/user',UserRouter);
 
 app.use((req,res,next)=>{
     const err = new Error('NOT FOUND');
