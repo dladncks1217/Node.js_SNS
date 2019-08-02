@@ -22,6 +22,7 @@ router.post('/join',isNotLoggedIn, async (req,res,next)=>{ //promise async
             nick, 
             password: hash,
         });
+        return res.redirect('/');
     }catch(error){
         console.error(error);
         return next(error);
