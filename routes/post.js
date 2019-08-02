@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path'); 
 
 const {Post, Hashtag} = require('../models');
+const {isLoggedIn} = require('./middlewares');
 
 const upload = multer({
     storage: multer.diskStorage({
@@ -18,14 +19,14 @@ const upload = multer({
     limits:{fileSize: 5 * 1024 * 1024},
 });
 
-router.post('/img', upload.single('img'),(req,res)=>{
+router.post('/img', isLoggedIn, upload.single('img'),(req,res)=>{
     console.log(req.file); // 보통 폼 업로드는 req.body에 들어가나 multer를 통해 업로드한 파일은 req.file에 들어가있다.
     res.json({url: `/img/${req.file.filename}` });
 });
 
 const upload2 = multer();
 
-router.post('/',  upload2.none(), async (req,res,next)=>{
+router.post('/',  isLoggedIn, upload2.none(), async (req,res,next)=>{
     //게시글 업로드
     try{
         const post = await Post.create({
@@ -53,7 +54,7 @@ router.get('/hashtag',async (req,res,next)=>{ //해시태그 검색 시 그 태�
         return res.redirect('/'); //아무것도 입력 안하고 검색하면 다시 메인페이지로
     }
     try{
-        const hashtag = await Hashtag.find({where :{ title: query}});
+        const hashtag = await Hashtag.findOne({where :{ title: query}});
         let posts = [];
         if(hashtag){
             posts = await hashtag.getPosts({include:[{model:User}]});
@@ -67,6 +68,6 @@ router.get('/hashtag',async (req,res,next)=>{ //해시태그 검색 시 그 태�
         console.error(error);
         next(error);
     }
-})
+});
 
 module.exports = router;
