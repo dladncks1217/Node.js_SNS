@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path'); 
 
-const {Post, Hashtag} = require('../models');
+const {Post, Hashtag, User} = require('../models');
 const {isLoggedIn} = require('./middlewares');
 
 const upload = multer({
