@@ -70,4 +70,26 @@ router.get('/hashtag',async (req,res,next)=>{ //해시태그 검색 시 그 태�
     }
 });
 
+//좋아요 기능 라우터
+router.post('/:id/like', async(req,res,next)=>{
+    try{
+        const post = await Post.find({where:{ id: req.params.id }});
+        await post.addLiker(req.user.id);
+        res.send('OK');
+    }catch(error){
+        console.error(error);
+        next(error);
+    }
+});
+router.delete('/:id/like',async(req,res,next)=>{
+    try{
+        const post = await Post.findOne({where:{id:req.user.id}});
+        await post.removeLiker(req.params.id);
+        res.send('OK');
+    }catch(error){
+        console.error(error);
+        next(error);
+    }
+});
+
 module.exports = router;
