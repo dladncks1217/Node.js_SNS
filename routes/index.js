@@ -21,12 +21,17 @@ router.get('/profile',isLoggedIn, (req,res)=>{ // 로그인 한사람은 로그�
 router.get('/',(req,res,next)=>{
     console.log(Post.id);
     Post.findAll({
-        include:{
+        include:[{
             model:User,
             attributes:['id','nick'],
-        },
+        },{
+            model:User,
+            attributes:['id','nick'],
+            as:'Liker',
+        }],
     })
     .then((posts)=>{
+        console.log(posts);
         res.render('main',{
             title:'NodeBird',
             twits: posts,
