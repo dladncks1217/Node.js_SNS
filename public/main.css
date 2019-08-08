@@ -75,7 +75,7 @@ input[type='text'], input[type='email'], input[type='password'], textarea {
   line-height: 37px;
 }
 #img { display: none; }
-#twit { width: 100%; min-height: 72px; }
+#twit { width: 100%; min-height: 72px; resize:none}
 #twit-btn {
   float: right;
   color: white;
