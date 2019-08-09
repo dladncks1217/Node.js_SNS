@@ -34,9 +34,9 @@ block content
               img(src=twit.img alt='섬네일')
           -const like = user && twit && twit.Liker && twit.Liker.map(l=>l.id).includes(user.id);
           if user && !like
-            button.like 좋아요
+            button.like ♡
           else if user && like 
-            button.unlike 좋아요 취소
+            button.unlike ♥
   script.
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function (e) {
