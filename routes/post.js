@@ -47,6 +47,17 @@ router.post('/',  isLoggedIn, upload2.none(), async (req,res,next)=>{
         next(error);
     }
 });
+//게시글삭제라우터
+router.delete('/:id', async (req,res,next)=>{
+    try{
+        await Post.destroy({where:{id:req.params.id,userId:req.user.id}});
+        res.send('OK');
+    }catch(error){
+        console.error(error);
+        next(error);
+    }
+});
+
 
 router.get('/hashtag',async (req,res,next)=>{ //해시태그 검색 시 그 태그 나오도록
     const query = req.query.hashtag;
