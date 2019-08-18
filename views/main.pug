@@ -13,11 +13,11 @@ block content
           div
             label#img-label(for='img') 사진 업로드
             input#img(type='file' accept='image/*')
-            button#twit-btn.btn(type='submit') 짹짹
+            button#twit-btn.btn(type='submit') 글 게시
     .twits
       form#hashtag-form(action='/post/hashtag')
-        input(type='text' name='hashtag' placeholder='태그 검색')
-        button.btn 검색
+        input#tagsearch(type='text' name='hashtag' placeholder='태그 검색')
+        button.btn#btn1 검색
       for twit in twits
         .twit
           input.twit-user-id(type='hidden' value=twit.user.id)
@@ -166,3 +166,9 @@ block content
         }  
       });
     });
+    document.getElementById('tagsearch').addEventListener('mouseover',function(){
+      document.getElementById('tagsearch').style.background = "#C0FFFF";
+    });
+    document.getElementById('tagsearch').addEventListener('mouseout',function(){
+      document.getElementById('tagsearch').style.background = "white";
+    })
