@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dladncks1217/Node.js_SNS#readme",
   "dependencies": {
+    "alertifyjs": "^1.11.4",
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
