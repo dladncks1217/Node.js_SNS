@@ -32,7 +32,8 @@
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "pug": "^2.0.4",
-    "sequelize": "^4.44.2"
+    "sequelize": "^4.44.2",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
