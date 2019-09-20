@@ -7,5 +7,5 @@ Node.js를 이용한 간단한 SNS 개발 (S.OWL 19년 1학기 개인프로젝�
   <ul>AJAX</ul>
   <ul>PUG(JADE)</ul>
   <ul>Node.js(Express)</ul>
-  <ul>Sequelize(JavaScript ORM)</ul>
+  <ul>Sequelize(Node.js ORM)</ul>
   <ul>Passport.js</ul>
