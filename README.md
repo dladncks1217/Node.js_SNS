@@ -1,5 +1,5 @@
 # Node.js_SNS
-Node.js를 이용한 간단한 SNS 개발 (S.OWL 19년 1학기 개인프로젝트입니다.)
+Node.js를 이용한 간단한 SNS 개발 
 <hr/>
 
 ## 사용목록
