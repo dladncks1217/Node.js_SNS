@@ -1,5 +1,5 @@
 const express = require('express');
-const bcrypt = require('bcrypt');//암호화모듈
+const bcrypt = require('bcryptjs');//암호화모듈
 const passport = require('passport');
 const {isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User } = require('../models');
