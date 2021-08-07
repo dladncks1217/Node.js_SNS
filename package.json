@@ -1,0 +1,42 @@
+{
+  "name": "nodebird",
+  "version": "0.0.1",
+  "description": "익스프레스로 만드는 sns서비스",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dladncks1217/Node.js_SNS.git"
+  },
+  "author": "임우찬",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dladncks1217/Node.js_SNS/issues"
+  },
+  "homepage": "https://github.com/dladncks1217/Node.js_SNS#readme",
+  "dependencies": {
+    "alertifyjs": "^1.11.4",
+    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "mysql2": "^1.7.0",
+    "passport": "^0.4.0",
+    "passport-kakao": "0.0.5",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.4",
+    "sequelize": "^5.15.1",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
