@@ -8,6 +8,8 @@ const localpassport = require('passport-local');
 const kakaopassport = require('passport-kakao');
 const bcrypt = require('bcryptjs');
 const flash = require('connect-flash');
+const helmet = require('helmet');
+const hpp = require('hpp'); // hpp공격 방어해주는 패키지.
 const passportConfig = require('./passport'); //passport의 index연결
 const favicon = require('serve-favicon');
 
@@ -15,6 +17,7 @@ const IndexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const postRouter = require('./routes/post');
 const UserRouter = require('./routes/user');
+const logger = require('./logger');
 
 const {sequelize} = require('./models');
   
@@ -71,6 +74,8 @@ app.use('/user',UserRouter);
 app.use((req,res,next)=>{
     const err = new Error('NOT FOUND');
     err.status = 404;
+    logger.info('hello'); // console.info 대체.
+    logger.error('err.message'); // console.error 대체
     next(err);
 });
 
