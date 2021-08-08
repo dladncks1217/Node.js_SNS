@@ -30,14 +30,19 @@ app.set('views',path.join(__dirname,'views'));
 app.set('port',process.env.PORT||8001);
 
 
+if(process.env.NODE_ENV ==='production'){
+    app.use(morgan('combined'));
+}else{// development
+    app.use(morgan('dev'));
+}
+
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(morgan('dev'));
 app.use('/', express.static(path.join(__dirname,'public'))); // /main.css
 app.use('/img', express.static(path.join(__dirname,'uploads'))); // /img/abc.png
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use(cookieparser(process.env.COOKIE_SECRET));
-app.use(session({
+const sessionOption = {
     resave: false,
     saveUnitialized:false,
     secret:process.env.COOKIE_SECRET,
@@ -45,7 +50,12 @@ app.use(session({
         httpOnly:true,
         secure:false,
     },
-}));
+}
+if(process.env.NODE_ENV === 'production'){
+    sessionOption.proxy=true; // 프록시서버 두기 가능.
+    sessionOption.cookie.secure=true; // https사용 가능
+}
+app.use(session(sessionOption));
 app.use(flash());
 
 app.use(passport.initialize()); //passport는 세션을 사용해야하기에 반드시 express-session밑에 passport쪽 미들웨어 연결.
